@@ -1,12 +1,22 @@
 <template>
   <div id="app">
+    <cryptoicon symbol="btc" size="100" color="black" />
+    <h1>
+      Crypto-Vue
+    </h1>
+    <CoinsList />
     <router-view />
   </div>
 </template>
 
 <script>
+import CoinsList from '../components/CoinsList';
+
 export default {
   name: 'App',
+  components: {
+    CoinsList,
+  },
 };
 </script>
 
