@@ -115,6 +115,15 @@ export default {
   border: none;
 }
 
+@media screen and (max-width: 500px) {
+  .filter-buttons button {
+    font-size: 0.7em;
+  }
+  .chart {
+    margin-top: 1em;
+  }
+}
+
 .filter-buttons button:hover {
   cursor: pointer;
   background: lightgray;

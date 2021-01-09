@@ -17,14 +17,15 @@
           style="text-decoration:none; color: inherit;"
         >
           <div class="coin">
-            <p>{{ coin.market_cap_rank }}</p>
+            <p class="coin-rank">{{ coin.market_cap_rank }}</p>
             <img :src="coin.image" class="coin-image" />
-            <p>{{ coin.id }}</p>
-            <p>
+            <p class="coin-name">{{ coin.id }}</p>
+            <p class="current-price">
               <strong>£{{ coin.current_price.toFixed(2) }}</strong>
             </p>
             <p
               class="lessThan0"
+              id="percentage"
               v-bind:class="{ greaterThan0: coin.greaterThan0 }"
             >
               {{ coin.price_change_percentage_24h.toFixed(2) }}%
@@ -83,9 +84,7 @@ export default {
 </script>
 
 <style scoped>
-.coin-container {
-}
-.coin-list {
+.coin-container .coin-list {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -96,29 +95,66 @@ export default {
 .coin-list li {
   width: 80%;
 }
-
-.coin {
-  display: flex;
-  flex-direction: row;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 6px;
-}
-
 .coin:hover {
   background: lightslategray;
   transition: 0.5s ease;
   cursor: pointer;
 }
 
-.coin p {
-  margin: 30px;
-  font-size: 1.5em;
+.coin {
+  display: flex;
+  flex-direction: row;
+  margin: 0.6em;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-size: 1.4em;
 }
+
+.coin-rank {
+  margin: 1em 2em;
+}
+
 .coin-image {
-  width: 4em;
-  height: 4em;
-  margin-top: 1em;
+  width: 3em;
+  height: 3em;
+  margin: 0.2em;
+}
+.coin-name {
+  padding-right: 2em;
+  margin: 1em 2em;
+  width: 7em;
+}
+
+.current-price {
+  min-width: 4em;
+  margin: 1em 2em;
+}
+
+#percentage {
+  margin: 1em 2em;
+}
+
+@media screen and (max-width: 700px) {
+  .coin-container {
+    font-size: 0.6em;
+  }
+
+  .coin-list li {
+    width: 100%;
+    margin-right: 25%;
+  }
+
+  .coin {
+    width: 100%;
+  }
+
+  .coin-image {
+    height: 3em;
+    width: 3em;
+  }
+  .coin p {
+    margin: 1em;
+  }
 }
 
 .lessThan0 {
