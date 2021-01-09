@@ -16,11 +16,11 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { getChartData } from '../api';
 
 export default {
   name: 'Coin',
-  props: 'currentPrice',
+
   data() {
     return {
       prices: {},
@@ -31,17 +31,11 @@ export default {
   },
 
   created() {
-    axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/${this.id}/market_chart?vs_currency=gbp&days=${this.noOfDays}&interval${this.interval}?
-        `
-      )
-      .then((res) => {
-        this.prices = this.filterPriceData(res.data.prices);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.prices = getChartData(this.id, this.noOfDays, this.interval).then(
+      (prices) => {
+        this.prices = this.filterPriceData(prices);
+      }
+    );
   },
 
   methods: {
@@ -56,25 +50,12 @@ export default {
 
       return priceData;
     },
-    filterTimeData(filter, interval) {
-      console.log('here', filter);
+    filterTimeData(filter) {
       this.noOfDays = filter;
 
-      if (interval) {
-        this.interval = interval;
-      }
-
-      axios
-        .get(
-          `https://api.coingecko.com/api/v3/coins/${this.id}/market_chart?vs_currency=gbp&days=${this.noOfDays}&interval${this.interval}?
-        `
-        )
-        .then((res) => {
-          this.prices = this.filterPriceData(res.data.prices);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      getChartData(this.id, this.noOfDays, this.interval).then((prices) => {
+        this.prices = this.filterPriceData(prices);
+      });
     },
   },
 };

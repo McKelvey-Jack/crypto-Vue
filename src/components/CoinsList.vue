@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { getCoinList } from '../api';
 export default {
   name: 'CoinsList',
   data() {
@@ -63,16 +63,12 @@ export default {
     },
   },
   created() {
-    axios
-      .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp')
-      .then((res) => {
-        this.coins = this.formattCoinData(res.data);
-        console.log(this.coins);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getCoinList().then((coins) => {
+      console.log(coins);
+      this.coins = this.formattCoinData(coins);
+    });
   },
+
   computed: {
     filteredCoins() {
       return this.coins.filter((coin) => {
