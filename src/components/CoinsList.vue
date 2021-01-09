@@ -10,8 +10,8 @@
 
       <p></p>
     </div>
-    <ul class="coin-list">
-      <li v-for="coin in filteredCoins" :key="coin.id">
+    <div class="coin-list-container">
+      <div class="coin-list" v-for="coin in filteredCoins" :key="coin.id">
         <router-link
           :to="`${coin.id}`"
           style="text-decoration:none; color: inherit;"
@@ -32,8 +32,8 @@
             </p>
           </div>
         </router-link>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -80,17 +80,27 @@ export default {
 </script>
 
 <style scoped>
-.coin-container .coin-list {
-  list-style: none;
+.coin-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.coin-list li {
-  width: 80%;
+.coin-list-container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
 }
+
+.coin-list {
+  width: 100%;
+}
+
 .coin:hover {
   background: lightslategray;
   transition: 0.5s ease;
@@ -104,6 +114,8 @@ export default {
   border: 1px solid black;
   border-radius: 6px;
   font-size: 1.4em;
+
+  min-width: 100%;
 }
 
 .coin-rank {
@@ -132,16 +144,16 @@ export default {
 
 @media screen and (max-width: 700px) {
   .coin-container {
+    width: %;
     font-size: 0.6em;
   }
 
-  .coin-list li {
-    width: 100%;
-    margin-right: 25%;
+  .coin {
+    margin-right: 4em;
   }
 
-  .coin {
-    width: 100%;
+  .coin-name {
+    width: 2em;
   }
 
   .coin-image {
