@@ -94,11 +94,11 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 95%;
+  width: 100%;
 }
 
 .coin-list {
-  width: 100%;
+  width: 95%;
 }
 
 .coin:hover {
@@ -110,16 +110,16 @@ export default {
 .coin {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   margin: 0.6em;
   border: 1px solid black;
   border-radius: 6px;
   font-size: 1.4em;
-
-  min-width: 100%;
 }
 
 .coin-rank {
   margin: 1em 2em;
+  min-width: 15%;
 }
 
 .coin-image {
@@ -130,38 +130,35 @@ export default {
 .coin-name {
   padding-right: 2em;
   margin: 1em 2em;
-  width: 7em;
+  min-width: 15%;
 }
 
 .current-price {
-  min-width: 4em;
   margin: 1em 2em;
+  min-width: 15%;
 }
 
 #percentage {
   margin: 1em 2em;
+  min-width: 15%;
 }
 
 @media screen and (max-width: 700px) {
   .coin-container {
-    width: %;
     font-size: 0.6em;
   }
 
-  .coin {
-    margin-right: 4em;
+  .coin-list-container {
+    width: 100%;
   }
 
-  .coin-name {
-    width: 2em;
+  .coin-list {
+    width: 100%;
+    justify-content: center;
   }
 
-  .coin-image {
-    height: 3em;
-    width: 3em;
-  }
   .coin p {
-    margin: 1em;
+    min-width: 5%;
   }
 }
 

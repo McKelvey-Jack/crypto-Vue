@@ -2,7 +2,12 @@
   <div class="coin-page">
     <h1 class="header">{{ id }} Price History</h1>
     <div class="chart">
-      <area-chart prefix="£" width="100%" :data="prices"></area-chart>
+      <area-chart
+        prefix="£"
+        width="100%"
+        :data="prices"
+        :dataset="{ pointRadius: 0 }"
+      ></area-chart>
     </div>
     <div class="filter-buttons">
       <button v-on:click="filterTimeData('7')">1 week</button>
