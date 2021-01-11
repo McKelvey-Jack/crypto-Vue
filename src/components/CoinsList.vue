@@ -143,9 +143,9 @@ export default {
   min-width: 15%;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 950px) {
   .coin-container {
-    font-size: 0.6em;
+    font-size: 0.9em;
   }
 
   .coin-list-container {
@@ -159,6 +159,12 @@ export default {
 
   .coin p {
     min-width: 5%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .coin-container {
+    font-size: 0.6em;
   }
 }
 
