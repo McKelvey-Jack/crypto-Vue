@@ -5,8 +5,12 @@
       <area-chart
         prefix="£"
         width="100%"
+        :min="null"
         :data="prices"
-        :dataset="{ pointRadius: 0 }"
+        :dataset="{
+          pointRadius: 0,
+          beginAtZero: false,
+        }"
       ></area-chart>
     </div>
     <div class="filter-buttons">
@@ -39,6 +43,7 @@ export default {
     this.prices = getChartData(this.id, this.noOfDays, this.interval).then(
       (prices) => {
         this.prices = this.filterPriceData(prices);
+        console.log(this.prices);
       }
     );
   },
@@ -46,13 +51,10 @@ export default {
   methods: {
     filterPriceData(prices) {
       const priceData = {};
-
       prices.forEach((price) => {
         const date = new Date(price[0]).toLocaleDateString('en-US');
         priceData[date] = price[1];
       });
-      console.log(priceData);
-
       return priceData;
     },
     filterTimeData(filter) {
